@@ -1,0 +1,309 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: ChiFouMi API-
+  description: An API to illustrate Webservice Testing
+schemes:
+  - https
+host: ubblak.pythonanywhere.com
+basePath: /chifoumi
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /players:
+    get:
+      description: Returns the list of players in the game
+      responses:
+        200:
+          description: Successful response
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Player'
+      parameters:
+        - name: name
+          in: query
+          type: string
+          description: Filter on player's name
+        - name: email
+          in: query
+          type: string
+          description: Filter on player's email
+    put:
+      description: Lets a player create a profile
+      parameters:
+        - name: player
+          in: body
+          description: creates a new player, given it has a unique email
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+              email:
+                type: string
+      responses:
+        201:
+          description: Successful response
+          schema:
+            $ref: '#/definitions/Player'
+        409:
+          description: Email already exists
+        422:
+          description: Invalid payload
+
+  /challenges:
+    get:
+      description: Returns the list of challenges in the game
+      responses:
+        200:
+          description: Successful response
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Challenge'
+      parameters:
+        - name: status
+          in: query
+          type: string
+          description: Filter on challenges status, may be ongoin, pending or over
+        - name: numberOfRounds
+          in: query
+          type: integer
+          description: Filter on challenges number of rounds
+        - name: currentRound
+          in: query
+          type: integer
+          description: Filter on challenges current round
+        - name: championId
+          in: query
+          type: integer
+          description: Filter on challenges champion ID
+        - name: challengerId
+          in: query
+          type: integer
+          description: Filter on challenges challenger ID
+    put:
+      description: Lets a player set a new challenge
+      parameters:
+        - name: challenge
+          in: body
+          description: creates a new pending challenge, given a champion id
+          schema:
+            type: object
+            properties:
+              type:
+                type: integer
+                example: "numberOfRounds"
+              champion:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    example: "02fb3142-6a8e-11ee-a477-0abba05372d3"
+                    description: valid player id
+      responses:
+        201:
+          description: Successful response
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Challenge'
+        422:
+          description: Invalid payload
+
+  /players/{player_id}:
+    get:
+      description: Returns a single player info
+      parameters:
+        - name: player_id
+          in: path
+          type: string
+          required: true
+      responses:
+        200:
+          description: Successful response
+          schema:
+            $ref: '#/definitions/Player'
+        404:
+          description: Player id not found
+    post:
+      description: Set a player's hand signal
+      parameters:
+        - name: player_id
+          in: path
+          type: string
+          required: true
+          description: valid player id
+        - name: player
+          in: body
+          required: true
+          description: a hand signal ("HandSignal.Scissors", "HandSignal.Paper", "HandSignal.Stone")
+          schema:
+            type: object
+            properties:
+              handSignal:
+                type: string
+                example: "HandSignal.Scissors"
+      responses:
+        200:
+          description: Successful response
+          schema:
+            $ref: '#/definitions/Player'
+        404:
+          description: Player id not found
+
+  /challenges/{challenge_id}:
+    get:
+      description: Returns a single challenge info
+      parameters:
+        - name: challenge_id
+          in: path
+          type: string
+          required: true
+          description: valid challenge id
+      responses:
+        200:
+          description: Successful response
+          schema:
+            $ref: '#/definitions/Challenge'
+        404:
+          description: Challenge id not found
+    delete:
+      parameters:
+        - name: challenge_id
+          in: path
+          type: string
+          required: true
+          description: valid challenge id
+      description: Lets delete a pending challenge
+      responses:
+        204:
+          description: Successful response
+        404:
+          description: Challenge id not found
+        409:
+          description: Challenge is not deletable
+
+  /challenges/{challenge_id}/join:
+    post:
+      description: Lets a player join a pending challenge
+      parameters:
+        - name: challenge_id
+          in: path
+          type: string
+          required: true
+          description: valid challenge id
+        - name: challenge
+          in: body
+          description: joins a pending challenge, given a challenger id
+          schema:
+            type: object
+            properties:
+              challenger:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    example: "02fb3142-6a8e-11ee-a477-0abba05372d3"
+                    description: valid player id
+      responses:
+        200:
+          description: Successful response
+          schema:
+            $ref: '#/definitions/Challenge'
+        404:
+          description: Challenge id not found
+        409:
+          description: Challenge is not joinable
+        422:
+          description: Invalid payload
+
+  /challenges/{challenge_id}/playround:
+    post:
+      description: Lets a challenge play a round
+      parameters:
+        - name: challenge_id
+          in: path
+          type: string
+          required: true
+          description: valid challenge id
+      responses:
+        200:
+          description: Successful response
+          schema:
+            $ref: '#/definitions/Challenge'
+        404:
+          description: Challenge id not found
+        409:
+          description: Challenge is not playable
+
+definitions:
+  Player:
+    type: object
+    required:
+      - type
+      - id
+      - name
+      - ranking
+      - link
+    properties:
+      type:
+        type: string
+        example: "chiFouMiPlayer"
+      id:
+        type: string
+        example: "02fb3142-6a8e-11ee-a477-0abba05372d3"
+      name:
+        type: string
+        example: "Alice"
+      ranking:
+        type: integer
+        example: 0
+      link:
+        type: string
+        example: "/chifoumi/players/02fb3142-6a8e-11ee-a477-0abba05372d3"
+      email:
+        type: string
+        example: "alice@testdata.com"
+      handSignal:
+        type: string
+        example: "HandSignal.Scissors"
+      history:
+        items:
+          $ref: '#/definitions/Challenge'
+
+  Challenge:
+    type: object
+    required:
+      - type
+      - id
+      - timestamp
+      - link
+      - status
+      - champion
+    properties:
+      type:
+        type: string
+        example: "chiFouMiChallenge"
+      id:
+        type: string
+        example: "02fb3142-6a8e-11ee-a477-0abba05372d3"
+      timestamp:
+        type: string
+        example: "2023-10-14 12:34:26.298249"
+      champion:
+        $ref: '#/definitions/Player'
+      challenger:
+        $ref: '#/definitions/Player'
+      link:
+        type: string
+        example: "/chifoumi/challenges/02fb3142-6a8e-11ee-a477-0abba05372d3"
+      status:
+        type: string
+        example: "pending"
+      winner:
+        type: string
+        example: "challenger"
