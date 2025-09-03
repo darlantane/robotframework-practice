@@ -94,3 +94,12 @@ class ChiFouMiKeyWords:
             return True
         except cherrypy.HTTPError:
             return False
+
+    def clone_player(self, player_ID):
+        try:
+            self.datamodel.check_player_existence(player_ID)
+            p1 = self.datamodel.get_player(player_ID)
+            tmp = self.datamodel.put_player({"name": p1["name"], "email": "clone-" + p1["email"]})
+            return tmp["id"]
+        except cherrypy.HTTPError as e:
+            return str(e)

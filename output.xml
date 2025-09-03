@@ -1,40 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.3.2 (Python 3.13.7 on win32)" generated="2025-09-02T17:18:06.512910" rpa="false" schemaversion="5">
+<robot generator="Robot 7.3.2 (Python 3.13.7 on win32)" generated="2025-09-03T15:18:26.111056" rpa="false" schemaversion="5">
 <suite id="s1" name="Chifoumi" source="C:\Users\darla\PycharmProjects\chifoumi_">
 <suite id="s1-s1" name="Test Suites" source="C:\Users\darla\PycharmProjects\chifoumi_\test_suites">
-<suite id="s1-s1-s1" name="Test 12" source="C:\Users\darla\PycharmProjects\chifoumi_\test_suites\test_12.robot">
-<test id="s1-s1-s1-t1" name="test 12-1 signe de la main d’un joueur de chi fou mi Stone" line="6">
+<suite id="s1-s1-s1" name="Test 20" source="C:\Users\darla\PycharmProjects\chifoumi_\test_suites\test_20.robot">
+<test id="s1-s1-s1-t1" name="Test 21 - Rejoindre un défi" line="20">
 <kw name="Clear Game" owner="ChiFouMiKeyWords" type="SETUP">
-<status status="PASS" start="2025-09-02T17:18:06.851064" elapsed="0.000253"/>
+<status status="PASS" start="2025-09-03T15:18:26.597763" elapsed="0.000171"/>
 </kw>
-<kw name="Create Player Alice">
 <kw name="Create Player" owner="ChiFouMiKeyWords">
-<msg time="2025-09-02T17:18:06.852073" level="INFO">${id_alice} = 071a8c97-8810-11f0-828f-345a6021f7c8</msg>
-<var>${id_alice}</var>
+<msg time="2025-09-03T15:18:26.598662" level="INFO">${playerA_id} = 79c091b5-88c8-11f0-9659-345a6021f7c8</msg>
+<var>${playerA_id}</var>
 <arg>Alice</arg>
-<arg>alice@gmail.com</arg>
-<status status="PASS" start="2025-09-02T17:18:06.851925" elapsed="0.000173"/>
+<arg>alice@test.com</arg>
+<status status="PASS" start="2025-09-03T15:18:26.598403" elapsed="0.000298"/>
 </kw>
-<kw name="Log To Console" owner="BuiltIn">
-<arg>${id_alice}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" start="2025-09-02T17:18:06.852168" elapsed="0.000249"/>
+<kw name="Player Initiates Challenge In Rounds" owner="ChiFouMiKeyWords">
+<msg time="2025-09-03T15:18:26.599448" level="INFO">${challenge_id} = 79c0b1aa-88c8-11f0-93cd-345a6021f7c8</msg>
+<var>${challenge_id}</var>
+<arg>${playerA_id}</arg>
+<arg>3</arg>
+<status status="PASS" start="2025-09-03T15:18:26.599171" elapsed="0.000307"/>
 </kw>
-<return>
-<value>${id_alice}</value>
-<status status="PASS" start="2025-09-02T17:18:06.852471" elapsed="0.000041"/>
-</return>
-<msg time="2025-09-02T17:18:06.852621" level="INFO">${ID} = 071a8c97-8810-11f0-828f-345a6021f7c8</msg>
-<var>${ID}</var>
-<status status="PASS" start="2025-09-02T17:18:06.851721" elapsed="0.000918"/>
+<kw name="Create Player" owner="ChiFouMiKeyWords">
+<msg time="2025-09-03T15:18:26.600135" level="INFO">${playerB_id} = 79c0cceb-88c8-11f0-b0f4-345a6021f7c8</msg>
+<var>${playerB_id}</var>
+<arg>Bob</arg>
+<arg>bob@test.com</arg>
+<status status="PASS" start="2025-09-03T15:18:26.599928" elapsed="0.000233"/>
 </kw>
-<status status="PASS" start="2025-09-02T17:18:06.850066" elapsed="0.003235"/>
+<kw name="Player Joins Challenge" owner="ChiFouMiKeyWords">
+<arg>${playerB_id}</arg>
+<arg>${challenge_id}</arg>
+<status status="PASS" start="2025-09-03T15:18:26.600738" elapsed="0.000318"/>
+</kw>
+<kw name="Get Challenge Characteristic" owner="ChiFouMiKeyWords">
+<msg time="2025-09-03T15:18:26.601727" level="INFO">${status} = ongoing</msg>
+<var>${status}</var>
+<arg>${challenge_id}</arg>
+<arg>status</arg>
+<status status="PASS" start="2025-09-03T15:18:26.601432" elapsed="0.000337"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${status}</arg>
+<arg>ongoing</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-09-03T15:18:26.602178" elapsed="0.000182"/>
+</kw>
+<kw name="Get Challenge Characteristic" owner="ChiFouMiKeyWords">
+<msg time="2025-09-03T15:18:26.603055" level="INFO">${challenger} = 79c0cceb-88c8-11f0-b0f4-345a6021f7c8</msg>
+<var>${challenger}</var>
+<arg>${challenge_id}</arg>
+<arg>challenger</arg>
+<status status="PASS" start="2025-09-03T15:18:26.602788" elapsed="0.000302"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${challenger}</arg>
+<arg>${playerB_id}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-09-03T15:18:26.603524" elapsed="0.000286"/>
+</kw>
+<status status="PASS" start="2025-09-03T15:18:26.596675" elapsed="0.007761"/>
 </test>
-<status status="PASS" start="2025-09-02T17:18:06.540162" elapsed="0.314034"/>
+<status status="PASS" start="2025-09-03T15:18:26.151797" elapsed="0.453660"/>
 </suite>
-<status status="PASS" start="2025-09-02T17:18:06.538630" elapsed="0.316267"/>
+<status status="PASS" start="2025-09-03T15:18:26.149855" elapsed="0.456771"/>
 </suite>
-<status status="PASS" start="2025-09-02T17:18:06.514419" elapsed="0.341232"/>
+<status status="PASS" start="2025-09-03T15:18:26.112852" elapsed="0.495216"/>
 </suite>
 <statistics>
 <total>
@@ -45,10 +76,10 @@
 <suite>
 <stat name="Chifoumi" id="s1" pass="1" fail="0" skip="0">Chifoumi</stat>
 <stat name="Test Suites" id="s1-s1" pass="1" fail="0" skip="0">Chifoumi.Test Suites</stat>
-<stat name="Test 12" id="s1-s1-s1" pass="1" fail="0" skip="0">Chifoumi.Test Suites.Test 12</stat>
+<stat name="Test 20" id="s1-s1-s1" pass="1" fail="0" skip="0">Chifoumi.Test Suites.Test 20</stat>
 </suite>
 </statistics>
 <errors>
-<msg time="2025-09-02T17:18:06.508035" level="WARN">Error in file 'C:\Users\darla\PycharmProjects\chifoumi_\test_suites\test_12.robot' on line 13: The '[Return]' setting is deprecated. Use the 'RETURN' statement instead.</msg>
+<msg time="2025-09-03T15:18:26.100948" level="WARN">Error in file 'C:\Users\darla\PycharmProjects\chifoumi_\test_suites\test_12.robot' on line 13: The '[Return]' setting is deprecated. Use the 'RETURN' statement instead.</msg>
 </errors>
 </robot>
