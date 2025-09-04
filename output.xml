@@ -1,71 +1,107 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.3.2 (Python 3.13.7 on win32)" generated="2025-09-03T15:18:26.111056" rpa="false" schemaversion="5">
+<robot generator="Robot 7.3.2 (Python 3.13.7 on win32)" generated="2025-09-04T16:26:25.628423" rpa="false" schemaversion="5">
 <suite id="s1" name="Chifoumi" source="C:\Users\darla\PycharmProjects\chifoumi_">
 <suite id="s1-s1" name="Test Suites" source="C:\Users\darla\PycharmProjects\chifoumi_\test_suites">
-<suite id="s1-s1-s1" name="Test 20" source="C:\Users\darla\PycharmProjects\chifoumi_\test_suites\test_20.robot">
-<test id="s1-s1-s1-t1" name="Test 21 - Rejoindre un défi" line="20">
-<kw name="Clear Game" owner="ChiFouMiKeyWords" type="SETUP">
-<status status="PASS" start="2025-09-03T15:18:26.597763" elapsed="0.000171"/>
+<suite id="s1-s1-s1" name="Test 12 Sql" source="C:\Users\darla\PycharmProjects\chifoumi_\test_suites\test_12_sql.robot">
+<test id="s1-s1-s1-t1" name="test 12-2 signe de la main d’un joueur de chi fou mi Scissors" line="17">
+<kw name="setup du test" type="SETUP">
+<kw name="Clear Game" owner="ChiFouMiKeyWords">
+<status status="PASS" start="2025-09-04T16:26:25.938485" elapsed="0.000100"/>
+</kw>
+<kw name="Connect To Database" owner="DatabaseLibrary">
+<msg time="2025-09-04T16:26:25.938842" level="INFO">Looking for configuration file: 'resources\db.cfg'</msg>
+<msg time="2025-09-04T16:26:25.938995" level="INFO">Configuration file doesn't exist</msg>
+<msg time="2025-09-04T16:26:25.943328" level="INFO">Connect to DB using : sqlite3.connect(database='sakila.db')</msg>
+<arg>sqlite3</arg>
+<arg>${database_adress}</arg>
+<doc>Creates a database connection using the DB API 2.0 ``db_module`` and the parameters provided.
+Along with listed commonly used arguments (`db_name`, `db_host` etc.)
+you can set any other DB module specific parameters as key/value pairs.</doc>
+<status status="PASS" start="2025-09-04T16:26:25.938673" elapsed="0.005185"/>
+</kw>
+<status status="PASS" start="2025-09-04T16:26:25.938107" elapsed="0.005916"/>
+</kw>
+<kw name="Create Player Alice">
+<kw name="Query" owner="DatabaseLibrary">
+<msg time="2025-09-04T16:26:25.945342" level="INFO" html="true">Executing sql:&lt;br&gt;&lt;code style="font-weight: bold;"&gt;select first_name, email from customer where first_name like 'ALICE%';&lt;/code&gt;</msg>
+<msg time="2025-09-04T16:26:25.946354" level="INFO">Commit the transaction</msg>
+<msg time="2025-09-04T16:26:25.946410" level="INFO" html="true">&lt;div style="max-width: 100%; overflow-x: auto;"&gt;&lt;table style="width: auto; border-collapse: collapse; border: 2px solid rgb(140 140 140)"&gt;&lt;caption style="text-align: left; font-weight: bold; padding: 5px;"&gt;Query returned 1 rows&lt;/caption&gt;&lt;tr&gt;&lt;th scope="col" style="color:black; background-color: #d6ecd4; border: 1px solid rgb(160 160 160);padding: 8px 10px;text-align: center;"&gt;Row&lt;/th&gt;&lt;th scope="col" style="background-color: #505050; color: #fff;border: 1px solid rgb(160 160 160);padding: 8px 10px;text-align: center;"&gt;first_name&lt;/th&gt;&lt;th scope="col" style="background-color: #505050; color: #fff;border: 1px solid rgb(160 160 160);padding: 8px 10px;text-align: center;"&gt;email&lt;/th&gt;&lt;/tr&gt;&lt;tr style="background-color: var(--secondary-color, #eee)"&gt;&lt;th scope="row" style="color:black; background-color: #d6ecd4;border: 1px solid rgb(160 160 160);padding: 8px 10px;text-align: center;"&gt;0&lt;/th&gt;&lt;td style="border: 1px solid rgb(160 160 160);padding: 8px 10px;text-align: center;"&gt;ALICE&lt;/td&gt;&lt;td style="border: 1px solid rgb(160 160 160);padding: 8px 10px;text-align: center;"&gt;ALICE.STEWART@sakilacustomer.org&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;</msg>
+<msg time="2025-09-04T16:26:25.946506" level="INFO">${resultat} = [('ALICE', 'ALICE.STEWART@sakilacustomer.org')]</msg>
+<var>${resultat}</var>
+<arg>select first_name, email from customer where first_name like 'ALICE%';</arg>
+<doc>Runs a query with the ``select_statement`` and returns the result as list of rows.
+The type of row values depends on the database module -
+usually they are tuples or tuple-like objects.</doc>
+<status status="PASS" start="2025-09-04T16:26:25.945242" elapsed="0.001280"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${resultat}[0][0]</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-09-04T16:26:25.946618" elapsed="0.000427"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${resultat}[0][1]</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-09-04T16:26:25.947142" elapsed="0.000372"/>
 </kw>
 <kw name="Create Player" owner="ChiFouMiKeyWords">
-<msg time="2025-09-03T15:18:26.598662" level="INFO">${playerA_id} = 79c091b5-88c8-11f0-9659-345a6021f7c8</msg>
-<var>${playerA_id}</var>
-<arg>Alice</arg>
-<arg>alice@test.com</arg>
-<status status="PASS" start="2025-09-03T15:18:26.598403" elapsed="0.000298"/>
+<msg time="2025-09-04T16:26:25.947775" level="INFO">${id} = 23a59aaf-899b-11f0-8bf8-345a6021f7c8</msg>
+<var>${id}</var>
+<arg>${resultat}[0][0]</arg>
+<arg>${resultat}[0][1]</arg>
+<status status="PASS" start="2025-09-04T16:26:25.947600" elapsed="0.000193"/>
 </kw>
-<kw name="Player Initiates Challenge In Rounds" owner="ChiFouMiKeyWords">
-<msg time="2025-09-03T15:18:26.599448" level="INFO">${challenge_id} = 79c0b1aa-88c8-11f0-93cd-345a6021f7c8</msg>
-<var>${challenge_id}</var>
-<arg>${playerA_id}</arg>
-<arg>3</arg>
-<status status="PASS" start="2025-09-03T15:18:26.599171" elapsed="0.000307"/>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2025-09-04T16:26:25.948561" level="INFO">${ID_ALICE} = 23a59aaf-899b-11f0-8bf8-345a6021f7c8</msg>
+<arg>${ID_ALICE}</arg>
+<arg>${id}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2025-09-04T16:26:25.947872" elapsed="0.000718"/>
 </kw>
-<kw name="Create Player" owner="ChiFouMiKeyWords">
-<msg time="2025-09-03T15:18:26.600135" level="INFO">${playerB_id} = 79c0cceb-88c8-11f0-b0f4-345a6021f7c8</msg>
-<var>${playerB_id}</var>
-<arg>Bob</arg>
-<arg>bob@test.com</arg>
-<status status="PASS" start="2025-09-03T15:18:26.599928" elapsed="0.000233"/>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${ID_ALICE}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-09-04T16:26:25.948666" elapsed="0.000443"/>
 </kw>
-<kw name="Player Joins Challenge" owner="ChiFouMiKeyWords">
-<arg>${playerB_id}</arg>
-<arg>${challenge_id}</arg>
-<status status="PASS" start="2025-09-03T15:18:26.600738" elapsed="0.000318"/>
+<status status="PASS" start="2025-09-04T16:26:25.944998" elapsed="0.004234"/>
 </kw>
-<kw name="Get Challenge Characteristic" owner="ChiFouMiKeyWords">
-<msg time="2025-09-03T15:18:26.601727" level="INFO">${status} = ongoing</msg>
-<var>${status}</var>
-<arg>${challenge_id}</arg>
-<arg>status</arg>
-<status status="PASS" start="2025-09-03T15:18:26.601432" elapsed="0.000337"/>
+<kw name="Alice plays">
+<kw name="Player Plays" owner="ChiFouMiKeyWords">
+<arg>${ID_ALICE}</arg>
+<arg>${hand}</arg>
+<status status="PASS" start="2025-09-04T16:26:25.950190" elapsed="0.000123"/>
 </kw>
-<kw name="Should Be Equal" owner="BuiltIn">
-<arg>${status}</arg>
-<arg>ongoing</arg>
-<doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" start="2025-09-03T15:18:26.602178" elapsed="0.000182"/>
+<arg>Scissors</arg>
+<status status="PASS" start="2025-09-04T16:26:25.949935" elapsed="0.000427"/>
 </kw>
-<kw name="Get Challenge Characteristic" owner="ChiFouMiKeyWords">
-<msg time="2025-09-03T15:18:26.603055" level="INFO">${challenger} = 79c0cceb-88c8-11f0-b0f4-345a6021f7c8</msg>
-<var>${challenger}</var>
-<arg>${challenge_id}</arg>
-<arg>challenger</arg>
-<status status="PASS" start="2025-09-03T15:18:26.602788" elapsed="0.000302"/>
+<kw name="Get Player Characteristic" owner="ChiFouMiKeyWords">
+<msg time="2025-09-04T16:26:25.951195" level="INFO">${handSignal} = Scissors</msg>
+<var>${handSignal}</var>
+<arg>${ID_ALICE}</arg>
+<arg>handSignal</arg>
+<status status="PASS" start="2025-09-04T16:26:25.951059" elapsed="0.000154"/>
 </kw>
 <kw name="Should Be Equal" owner="BuiltIn">
-<arg>${challenger}</arg>
-<arg>${playerB_id}</arg>
+<arg>Scissors</arg>
+<arg>${handSignal}</arg>
 <doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" start="2025-09-03T15:18:26.603524" elapsed="0.000286"/>
+<status status="PASS" start="2025-09-04T16:26:25.951874" elapsed="0.000153"/>
 </kw>
-<status status="PASS" start="2025-09-03T15:18:26.596675" elapsed="0.007761"/>
+<kw name="teardown du test" type="TEARDOWN">
+<kw name="Disconnect From All Databases" owner="DatabaseLibrary">
+<doc>Disconnects from all the databases -
+useful when testing with multiple database connections (aliases).</doc>
+<status status="PASS" start="2025-09-04T16:26:25.952687" elapsed="0.000210"/>
+</kw>
+<status status="PASS" start="2025-09-04T16:26:25.952520" elapsed="0.000417"/>
+</kw>
+<status status="PASS" start="2025-09-04T16:26:25.937329" elapsed="0.016080"/>
 </test>
-<status status="PASS" start="2025-09-03T15:18:26.151797" elapsed="0.453660"/>
+<status status="PASS" start="2025-09-04T16:26:25.654542" elapsed="0.299643"/>
 </suite>
-<status status="PASS" start="2025-09-03T15:18:26.149855" elapsed="0.456771"/>
+<status status="PASS" start="2025-09-04T16:26:25.653077" elapsed="0.301772"/>
 </suite>
-<status status="PASS" start="2025-09-03T15:18:26.112852" elapsed="0.495216"/>
+<status status="PASS" start="2025-09-04T16:26:25.630141" elapsed="0.326105"/>
 </suite>
 <statistics>
 <total>
@@ -76,10 +112,10 @@
 <suite>
 <stat name="Chifoumi" id="s1" pass="1" fail="0" skip="0">Chifoumi</stat>
 <stat name="Test Suites" id="s1-s1" pass="1" fail="0" skip="0">Chifoumi.Test Suites</stat>
-<stat name="Test 20" id="s1-s1-s1" pass="1" fail="0" skip="0">Chifoumi.Test Suites.Test 20</stat>
+<stat name="Test 12 Sql" id="s1-s1-s1" pass="1" fail="0" skip="0">Chifoumi.Test Suites.Test 12 Sql</stat>
 </suite>
 </statistics>
 <errors>
-<msg time="2025-09-03T15:18:26.100948" level="WARN">Error in file 'C:\Users\darla\PycharmProjects\chifoumi_\test_suites\test_12.robot' on line 13: The '[Return]' setting is deprecated. Use the 'RETURN' statement instead.</msg>
+<msg time="2025-09-04T16:26:25.619266" level="WARN">Error in file 'C:\Users\darla\PycharmProjects\chifoumi_\test_suites\test_12.robot' on line 13: The '[Return]' setting is deprecated. Use the 'RETURN' statement instead.</msg>
 </errors>
 </robot>
