@@ -1,137 +1,89 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.3.2 (Python 3.13.7 on win32)" generated="2025-09-05T01:39:45.050982" rpa="false" schemaversion="5">
+<robot generator="Robot 7.3.2 (Python 3.13.7 on win32)" generated="2025-09-08T01:50:51.086230" rpa="false" schemaversion="5">
 <suite id="s1" name="Chifoumi" source="C:\Users\darla\PycharmProjects\chifoumi_">
 <suite id="s1-s1" name="Test Suites" source="C:\Users\darla\PycharmProjects\chifoumi_\test_suites">
-<suite id="s1-s1-s1" name="Test 40" source="C:\Users\darla\PycharmProjects\chifoumi_\test_suites\test_40.robot">
-<test id="s1-s1-s1-t1" name="Test 40-1 Joueur A gagne tout" line="6">
+<suite id="s1-s1-s1" name="US 20 player management" source="C:\Users\darla\PycharmProjects\chifoumi_\test_suites\US_20_player_management.robot">
+<test id="s1-s1-s1-t1" name="TEST 22-1: challenge is cancelled" line="34">
 <kw name="Clear Game" owner="ChiFouMiKeyWords" type="SETUP">
-<status status="PASS" start="2025-09-05T01:39:45.429392" elapsed="0.000134"/>
+<status status="PASS" start="2025-09-08T01:50:51.417413" elapsed="0.000133"/>
 </kw>
+<kw name="Create player Alice">
 <kw name="Create Player" owner="ChiFouMiKeyWords">
-<msg time="2025-09-05T01:39:45.430628" level="INFO">${A} = 7014a823-89e8-11f0-bcfa-345a6021f7c8</msg>
-<var>${A}</var>
-<arg>A</arg>
-<arg>a@mail.com</arg>
-<status status="PASS" start="2025-09-05T01:39:45.430162" elapsed="0.000504"/>
+<msg time="2025-09-08T01:50:51.418548" level="INFO">${PLAYER_A} = 7c479ab9-8c45-11f0-b97c-345a6021f7c8</msg>
+<var>${PLAYER_A}</var>
+<arg>Alice</arg>
+<arg>alice@gmail.com</arg>
+<status status="PASS" start="2025-09-08T01:50:51.418417" elapsed="0.000157"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2025-09-08T01:50:51.419061" level="INFO">${ALICE} = 7c479ab9-8c45-11f0-b97c-345a6021f7c8</msg>
+<arg>${ALICE}</arg>
+<arg>${PLAYER_A}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2025-09-08T01:50:51.418659" elapsed="0.000436"/>
+</kw>
+<status status="PASS" start="2025-09-08T01:50:51.418233" elapsed="0.000906"/>
 </kw>
 <kw name="Player Initiates Challenge In Rounds" owner="ChiFouMiKeyWords">
-<msg time="2025-09-05T01:39:45.431337" level="INFO">${challenge} = 7014c4bd-89e8-11f0-81e2-345a6021f7c8</msg>
-<var>${challenge}</var>
-<arg>${A}</arg>
+<msg time="2025-09-08T01:50:51.419816" level="INFO">${AB_CHALLENGE} = 7c47cb40-8c45-11f0-a0b0-345a6021f7c8</msg>
+<var>${AB_CHALLENGE}</var>
+<arg>${ALICE}</arg>
 <arg>3</arg>
-<status status="PASS" start="2025-09-05T01:39:45.431103" elapsed="0.000256"/>
+<status status="PASS" start="2025-09-08T01:50:51.419483" elapsed="0.000353"/>
 </kw>
-<kw name="Create Player" owner="ChiFouMiKeyWords">
-<msg time="2025-09-05T01:39:45.431869" level="INFO">${B} = 7014d9c4-89e8-11f0-9763-345a6021f7c8</msg>
-<var>${B}</var>
-<arg>B</arg>
-<arg>b@mail.com</arg>
-<status status="PASS" start="2025-09-05T01:39:45.431723" elapsed="0.000167"/>
-</kw>
-<kw name="Player Joins Challenge" owner="ChiFouMiKeyWords">
-<arg>${B}</arg>
-<arg>${challenge}</arg>
-<status status="PASS" start="2025-09-05T01:39:45.432313" elapsed="0.000141"/>
-</kw>
-<kw name="Player Plays" owner="ChiFouMiKeyWords">
-<arg>${A}</arg>
-<arg>Stone</arg>
-<status status="PASS" start="2025-09-05T01:39:45.432846" elapsed="0.000118"/>
-</kw>
-<kw name="Player Plays" owner="ChiFouMiKeyWords">
-<arg>${B}</arg>
-<arg>Scissors</arg>
-<status status="PASS" start="2025-09-05T01:39:45.433358" elapsed="0.000135"/>
-</kw>
-<kw name="Play A Round Of" owner="ChiFouMiKeyWords">
-<arg>${challenge}</arg>
-<status status="PASS" start="2025-09-05T01:39:45.433715" elapsed="0.000120"/>
-</kw>
-<kw name="Player Plays" owner="ChiFouMiKeyWords">
-<arg>${A}</arg>
-<arg>Stone</arg>
-<status status="PASS" start="2025-09-05T01:39:45.434033" elapsed="0.000131"/>
-</kw>
-<kw name="Player Plays" owner="ChiFouMiKeyWords">
-<arg>${B}</arg>
-<arg>Scissors</arg>
-<status status="PASS" start="2025-09-05T01:39:45.434643" elapsed="0.000113"/>
-</kw>
-<kw name="Play A Round Of" owner="ChiFouMiKeyWords">
-<arg>${challenge}</arg>
-<status status="PASS" start="2025-09-05T01:39:45.434964" elapsed="0.000130"/>
-</kw>
-<kw name="Player Plays" owner="ChiFouMiKeyWords">
-<arg>${A}</arg>
-<arg>Stone</arg>
-<status status="PASS" start="2025-09-05T01:39:45.435269" elapsed="0.000100"/>
-</kw>
-<kw name="Player Plays" owner="ChiFouMiKeyWords">
-<arg>${B}</arg>
-<arg>Scissors</arg>
-<status status="PASS" start="2025-09-05T01:39:45.435556" elapsed="0.000101"/>
-</kw>
-<kw name="Play A Round Of" owner="ChiFouMiKeyWords">
-<arg>${challenge}</arg>
-<status status="PASS" start="2025-09-05T01:39:45.435845" elapsed="0.000116"/>
+<kw name="Check Challenge Exists In System" owner="ChiFouMiKeyWords">
+<msg time="2025-09-08T01:50:51.420526" level="INFO">${existenceC} = True</msg>
+<var>${existenceC}</var>
+<arg>${AB_CHALLENGE}</arg>
+<status status="PASS" start="2025-09-08T01:50:51.420406" elapsed="0.000137"/>
 </kw>
 <kw name="Should Be Equal" owner="BuiltIn">
-<msg time="2025-09-05T01:39:45.436844" level="FAIL">Variable '${challenge_state}' not found.</msg>
-<arg>${challenge_state}=</arg>
-<arg>Get Challenge Characteristic</arg>
-<arg>${challenge}</arg>
-<arg>handsignal</arg>
+<arg>${existenceC}</arg>
+<arg>${True}</arg>
 <doc>Fails if the given objects are unequal.</doc>
-<status status="FAIL" start="2025-09-05T01:39:45.436167" elapsed="0.000711">Variable '${challenge_state}' not found.</status>
+<status status="PASS" start="2025-09-08T01:50:51.420950" elapsed="0.000162"/>
+</kw>
+<kw name="Player Cancels Challenge" owner="ChiFouMiKeyWords">
+<arg>${ALICE}</arg>
+<arg>${AB_CHALLENGE}</arg>
+<status status="PASS" start="2025-09-08T01:50:51.421763" elapsed="0.000131"/>
+</kw>
+<kw name="Check Challenge Exists In System" owner="ChiFouMiKeyWords">
+<msg time="2025-09-08T01:50:51.422323" level="INFO">${existenceC} = False</msg>
+<var>${existenceC}</var>
+<arg>${AB_CHALLENGE}</arg>
+<status status="PASS" start="2025-09-08T01:50:51.422196" elapsed="0.000145"/>
 </kw>
 <kw name="Should Be Equal" owner="BuiltIn">
-<arg>${champion}=</arg>
-<arg>Get Challenge Characteristic</arg>
-<arg>${challenge}</arg>
-<arg>champion</arg>
-<arg>${A}</arg>
+<arg>${existenceC}</arg>
+<arg>${False}</arg>
 <doc>Fails if the given objects are unequal.</doc>
-<status status="NOT RUN" start="2025-09-05T01:39:45.437248" elapsed="0.000018"/>
+<status status="PASS" start="2025-09-08T01:50:51.422987" elapsed="0.000147"/>
 </kw>
-<kw name="Should Be Equal As Integers" owner="BuiltIn">
-<arg>${ranking_A}=</arg>
-<arg>Get Player Characteristic</arg>
-<arg>${A}</arg>
-<arg>ranking</arg>
-<arg>1</arg>
-<doc>Fails if objects are unequal after converting them to integers.</doc>
-<status status="NOT RUN" start="2025-09-05T01:39:45.437458" elapsed="0.000017"/>
-</kw>
-<kw name="Should Be Equal As Integers" owner="BuiltIn">
-<arg>${ranking_B}=</arg>
-<arg>Get Player Characteristic</arg>
-<arg>${B}</arg>
-<arg>ranking</arg>
-<arg>-1</arg>
-<doc>Fails if objects are unequal after converting them to integers.</doc>
-<status status="NOT RUN" start="2025-09-05T01:39:45.437774" elapsed="0.000018"/>
-</kw>
-<status status="FAIL" start="2025-09-05T01:39:45.428611" elapsed="0.009434">Variable '${challenge_state}' not found.</status>
+<doc>Annuler un défi chi fou mi</doc>
+<status status="PASS" start="2025-09-08T01:50:51.416207" elapsed="0.007497"/>
 </test>
-<status status="FAIL" start="2025-09-05T01:39:45.082289" elapsed="0.356470"/>
+<doc>Challenge management.
+Keywords are defined in the suite file</doc>
+<status status="PASS" start="2025-09-08T01:50:51.112156" elapsed="0.313069"/>
 </suite>
-<status status="FAIL" start="2025-09-05T01:39:45.080123" elapsed="0.359460"/>
+<status status="PASS" start="2025-09-08T01:50:51.110410" elapsed="0.316542"/>
 </suite>
-<status status="FAIL" start="2025-09-05T01:39:45.052552" elapsed="0.388070"/>
+<status status="PASS" start="2025-09-08T01:50:51.087630" elapsed="0.340287"/>
 </suite>
 <statistics>
 <total>
-<stat pass="0" fail="1" skip="0">All Tests</stat>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat name="Chifoumi" id="s1" pass="0" fail="1" skip="0">Chifoumi</stat>
-<stat name="Test Suites" id="s1-s1" pass="0" fail="1" skip="0">Chifoumi.Test Suites</stat>
-<stat name="Test 40" id="s1-s1-s1" pass="0" fail="1" skip="0">Chifoumi.Test Suites.Test 40</stat>
+<stat name="Chifoumi" id="s1" pass="1" fail="0" skip="0">Chifoumi</stat>
+<stat name="Test Suites" id="s1-s1" pass="1" fail="0" skip="0">Chifoumi.Test Suites</stat>
+<stat name="US 20 player management" id="s1-s1-s1" pass="1" fail="0" skip="0">Chifoumi.Test Suites.US 20 player management</stat>
 </suite>
 </statistics>
 <errors>
-<msg time="2025-09-05T01:39:45.036499" level="WARN">Error in file 'C:\Users\darla\PycharmProjects\chifoumi_\test_suites\test_12.robot' on line 13: The '[Return]' setting is deprecated. Use the 'RETURN' statement instead.</msg>
+<msg time="2025-09-08T01:50:51.070138" level="WARN">Error in file 'C:\Users\darla\PycharmProjects\chifoumi_\test_suites\test_12.robot' on line 13: The '[Return]' setting is deprecated. Use the 'RETURN' statement instead.</msg>
 </errors>
 </robot>
