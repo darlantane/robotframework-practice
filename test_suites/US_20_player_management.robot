@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation     Challenge management.
-...               Keywords are defined in the suite file
+...               Keywords are defined in the suite file.
 Library           test_library/ChiFouMiKeyWords.py
 Test Setup       Clear Game
 
